@@ -1,0 +1,98 @@
+﻿[
+  {
+    "id": "discovery",
+    "title": "Discovery & Strategy",
+    "level": "Client alignment",
+    "description": "Align on the AI product, audience, and conversion goal so the landing page sells clearly.",
+    "sections": [
+      {
+        "id": "inputs",
+        "title": "Inputs",
+        "difficulty": "Easy",
+        "summary": "Gather context and constraints.",
+        "steps": [
+          "Collect product link, target audience, and primary CTA (demo, waitlist, trial).",
+          "List top competitors and what you want to differentiate.",
+          "Define success metric (signup rate, demo bookings, email capture).",
+          "Confirm tech constraints (Next.js/Vite, CMS, analytics, hosting)."
+        ]
+      },
+      {
+        "id": "messaging",
+        "title": "Messaging",
+        "difficulty": "Medium",
+        "summary": "Make the value obvious in seconds.",
+        "steps": [
+          "Write a 1-line value prop and 2 supporting benefit bullets.",
+          "Add proof: testimonials, logos, metrics, or believable claims.",
+          "Define objection handling (security, accuracy, pricing, integration).",
+          "Map section order from most-to-least persuasive."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "design",
+    "title": "Design & Copy",
+    "level": "Premium UI",
+    "description": "High-end visuals and tight copy that match your AI product quality.",
+    "sections": [
+      {
+        "id": "structure",
+        "title": "Page Structure",
+        "difficulty": "Medium",
+        "summary": "A conversion-ready layout.",
+        "steps": [
+          "Hero: headline, subhead, CTA, and proof.",
+          "Features: 3-6 sections with scannable benefits.",
+          "Social proof: testimonials, logos, or usage stats.",
+          "Pricing/FAQ: reduce friction and answer objections."
+        ]
+      },
+      {
+        "id": "visuals",
+        "title": "Visual Polish",
+        "difficulty": "Hard",
+        "summary": "Details that make it feel expensive.",
+        "steps": [
+          "Design tokens: spacing, radius, shadows, and typography scale.",
+          "Micro-interactions: hover, tap, and scroll feel.",
+          "Illustration/visual system: gradients, ambient background, icons.",
+          "Mobile-first spacing and readability checks."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "build",
+    "title": "Build, QA & Launch",
+    "level": "Ship-ready",
+    "description": "Implement fast, test across devices, and launch with confidence.",
+    "sections": [
+      {
+        "id": "implementation",
+        "title": "Implementation",
+        "difficulty": "Medium",
+        "summary": "React + Tailwind build with clean components.",
+        "steps": [
+          "Build reusable sections/components with consistent props.",
+          "Add motion that feels premium (not distracting).",
+          "Implement CTA tracking hooks (events) if needed.",
+          "Ensure forms have clear success/error states."
+        ]
+      },
+      {
+        "id": "qa",
+        "title": "QA & Launch",
+        "difficulty": "Medium",
+        "summary": "Performance, accessibility, and deployment.",
+        "steps": [
+          "Run Lighthouse and fix the biggest wins.",
+          "Keyboard navigation + focus states audit.",
+          "Cross-browser/device checks (mobile, tablet, desktop).",
+          "Deploy to Vercel/Netlify and verify analytics/events."
+        ]
+      }
+    ]
+  }
+]

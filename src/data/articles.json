@@ -1,0 +1,42 @@
+[
+  {
+    "id": "designing-frontends-like-products",
+    "slug": "designing-frontends-like-products",
+    "title": "Design Your Frontend Like a Product, Not a Page",
+    "summary": "A mental model for treating your UI as a living system with clear constraints and outcomes.",
+    "difficulty": "Intermediate",
+    "tags": ["architecture", "design", "mindset"],
+    "sections": [
+      {
+        "id": "why-product-thinking",
+        "title": "Why Product Thinking Matters",
+        "content": "\nTreat your frontend as a product with users, constraints, and a roadmap.\n\n* Who is this UI for?*\n* What problems are we actually solving?*\n* How will we know it's working?*\n"
+      },
+      {
+        "id": "systems-over-screens",
+        "title": "Systems Over Screens",
+        "content": "\nGreat frontends are systems: design tokens, layout primitives, typography scales, and interaction patterns.\nStart small, name your decisions, and reuse relentlessly.\n"
+      }
+    ]
+  },
+  {
+    "id": "shipping-confidence-checklist",
+    "slug": "shipping-confidence-checklist",
+    "title": "A Shipping Checklist for Frontend Engineers",
+    "summary": "A calm pre-ship checklist you can reuse on every feature.",
+    "difficulty": "Beginner",
+    "tags": ["workflow", "quality"],
+    "sections": [
+      {
+        "id": "ux-flow",
+        "title": "UX Flow & Edge Cases",
+        "content": "\nWalk the main flows slowly. Try weird inputs. Resize. Toggle dark mode.\nIf something feels off, it probably is.\n"
+      },
+      {
+        "id": "accessibility",
+        "title": "Accessibility & Semantics",
+        "content": "\nRun through headings, labels, alt text, and keyboard navigation.\nUse at least one automated check (like axe or Lighthouse).\n"
+      }
+    ]
+  }
+]
