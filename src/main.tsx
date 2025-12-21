@@ -5,7 +5,7 @@ import { AppRouter } from './router';
 import './styles/index.css';
 
 // Use the project JPG as the favicon by importing it so Vite resolves the hashed URL.
-import launchLogo from '../images/launchglow.jpg';
+import launchLogo from '../images/launchglow.svg';
 
 function setFaviconToCircularImage(srcUrl: string, size = 64) {
   try {

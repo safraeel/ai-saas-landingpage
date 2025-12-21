@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import launchLogo from '../../../images/launchglow.jpg';
+import launchLogo from '../../../images/launchglow.svg';
 import { Link } from 'react-router-dom';
 import { SunIcon, MoonIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useThemeStore } from '../../store/themeStore';

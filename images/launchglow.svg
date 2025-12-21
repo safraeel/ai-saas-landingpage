@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Aggressive neon hollow 'L' — outlined, inset stroke, strong glow and contrast for max eye-catch -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="lgTitle">
+  <title id="lgTitle">Launchglow neon L</title>
+  <defs>
+    <radialGradient id="neonBg" cx="35%" cy="20%" r="80%">
+      <stop offset="0%" stop-color="#0ff" stop-opacity="0.95" />
+      <stop offset="45%" stop-color="#7c3aed" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#ff2281" stop-opacity="0.9" />
+    </radialGradient>
+
+    <!-- neon stroke gradient -->
+    <linearGradient id="strokeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f5ff" />
+      <stop offset="50%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#ff2d95" />
+    </linearGradient>
+
+    <!-- heavy outer glow -->
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6" result="blur1" />
+      <feGaussianBlur stdDeviation="10" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <clipPath id="circleMask"><circle cx="32" cy="32" r="30" /></clipPath>
+  </defs>
+
+  <!-- background circle with vivid gradient -->
+  <circle cx="32" cy="32" r="30" fill="url(#neonBg)" />
+
+  <g clip-path="url(#circleMask)">
+    <!-- hollow 'L' constructed as thick path with transparent center (using stroke and stroke-linejoin) -->
+    <path d="M20 14 L20 46 L44 46" fill="none" stroke="url(#strokeGrad)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)" />
+
+    <!-- inner cut to create hollow effect: draw same path but slightly narrower in background color to make negative space -->
+    <path d="M23 17 L23 44 L41 44" fill="none" stroke="#0f172a" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.95" />
+
+    <!-- tiny accent spark for focus -->
+    <circle cx="48" cy="18" r="3.2" fill="#fff" opacity="0.9" />
+  </g>
+
+  <!-- subtle outer ring to frame the mark -->
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#000000" stroke-opacity="0.06" stroke-width="1" />
+</svg>
