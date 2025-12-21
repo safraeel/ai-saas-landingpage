@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import launchLogo from '../../../images/launchglow.jpg';
 import { Link } from 'react-router-dom';
 import { SunIcon, MoonIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useThemeStore } from '../../store/themeStore';
@@ -22,13 +23,18 @@ export const Navbar: React.FC = () => {
     <header className="fixed inset-x-0 top-0 z-40 border-b border-slate-800/70 bg-slate-950/70 backdrop-blur-xl">
       <nav className="section-max-width flex items-center justify-between py-4">
         <div className="flex items-center gap-2">
-          <img
-            src="/logo.svg"
-            alt="Launchglow Studio"
-            className="h-9 w-9 select-none"
-            loading="eager"
-            decoding="async"
-          />
+                <div className="rounded-full p-[2px] bg-gradient-to-r from-pink-500 via-orange-400 to-yellow-400 shadow-[0_10px_30px_rgba(252,165,29,0.12)] transition-transform duration-300 transform-gpu hover:scale-105">
+                  <div className="bg-slate-950 rounded-full p-[2px]">
+                    <img
+                      src={launchLogo}
+                      alt="Launchglow Studio"
+                      title="Launchglow Studio"
+                      className="h-10 w-10 select-none rounded-full object-cover ring-1 ring-slate-800/60"
+                      loading="eager"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
           <div className="leading-tight">
             <Link to="/" className="text-sm font-medium text-slate-300">
               Launchglow Studio
