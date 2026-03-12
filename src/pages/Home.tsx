@@ -43,24 +43,28 @@ export const HomePage: React.FC = () => {
             revenue.
           </motion.p>
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 }}
             className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
           >
-            <a
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               href="#work"
               className={`inline-flex w-full items-center justify-center rounded-xl bg-brand-500 px-6 py-3 text-sm font-medium text-slate-50 shadow-glow transition-colors hover:bg-brand-400 sm:w-auto sm:py-2.5 ${focusRingClasses}`}
             >
               View case studies
               <ArrowRightIcon className="ml-2 h-4 w-4" />
-            </a>
-            <a
+            </motion.a>
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               href="#contact"
               className={`inline-flex w-full items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-3 text-sm font-medium text-slate-200 shadow-soft transition-colors hover:border-slate-700 hover:bg-slate-900 sm:w-auto sm:py-2.5 ${focusRingClasses}`}
             >
               Work with me
-            </a>
+            </motion.a>
           </motion.div>
         </motion.div>
 

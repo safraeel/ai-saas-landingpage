@@ -3,18 +3,17 @@ import launchLogo from '../../../images/launchglow.svg';
 import { Link } from 'react-router-dom';
 import { SunIcon, MoonIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useThemeStore } from '../../store/themeStore';
+import { useAuthStore } from '../../store/authStore';
 
 const navLinks = [
-  { href: '#work', label: 'Work' },
-  { href: '#process', label: 'Process' },
-  { href: '#pricing', label: 'Pricing' },
-  { href: '#faq', label: 'FAQ' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/', label: 'Home' },
+  { href: '/pricing', label: 'Pricing' },
 ];
 
 export const Navbar: React.FC = () => {
   const [open, setOpen] = useState(false);
   const { theme, toggleTheme } = useThemeStore();
+  const { user } = useAuthStore();
 
   const focusRingClasses =
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950';
@@ -45,13 +44,13 @@ export const Navbar: React.FC = () => {
 
         <div className="hidden md:flex items-center gap-8 text-sm">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
-              href={link.href}
+              to={link.href}
               className={`relative rounded-lg pb-1 text-slate-400 transition-colors hover:text-slate-100 ${focusRingClasses}`}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <button
             type="button"
@@ -65,12 +64,22 @@ export const Navbar: React.FC = () => {
               <MoonIcon className="h-4 w-4" />
             )}
           </button>
-          <a
-            href="#contact"
-            className={`inline-flex items-center justify-center rounded-xl bg-brand-500 px-4 py-2 text-xs font-medium text-slate-50 shadow-glow transition-colors hover:bg-brand-400 ${focusRingClasses}`}
-          >
-            Work with me
-          </a>
+          
+          {user ? (
+            <Link
+              to="/dashboard"
+              className={`inline-flex items-center justify-center rounded-xl bg-slate-800 px-4 py-2 text-xs font-medium text-slate-50 transition-colors hover:bg-slate-700 ${focusRingClasses}`}
+            >
+              Dashboard
+            </Link>
+          ) : (
+            <Link
+              to="/auth"
+              className={`inline-flex items-center justify-center rounded-xl bg-brand-500 px-4 py-2 text-xs font-medium text-slate-50 shadow-glow transition-colors hover:bg-brand-400 ${focusRingClasses}`}
+            >
+              Sign In
+            </Link>
+          )}
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
@@ -101,22 +110,32 @@ export const Navbar: React.FC = () => {
         <div className="md:hidden border-t border-slate-800/70 bg-slate-950/95 backdrop-blur-xl">
           <div className="section-max-width flex flex-col gap-2 py-4 text-sm">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
-                href={link.href}
+                to={link.href}
                 onClick={() => setOpen(false)}
                 className={`rounded-xl px-3 py-2 text-slate-300 transition-colors hover:bg-slate-800/80 hover:text-slate-50 ${focusRingClasses}`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#contact"
-              onClick={() => setOpen(false)}
-              className={`mt-2 inline-flex items-center justify-center rounded-xl bg-brand-500 px-4 py-2 text-xs font-medium text-slate-50 shadow-glow transition-colors hover:bg-brand-400 ${focusRingClasses}`}
-            >
-              Work with me
-            </a>
+            {user ? (
+              <Link
+                to="/dashboard"
+                onClick={() => setOpen(false)}
+                className={`mt-2 inline-flex items-center justify-center rounded-xl bg-slate-800 px-4 py-2 text-xs font-medium text-slate-50 transition-colors hover:bg-slate-700 ${focusRingClasses}`}
+              >
+                Dashboard
+              </Link>
+            ) : (
+              <Link
+                to="/auth"
+                onClick={() => setOpen(false)}
+                className={`mt-2 inline-flex items-center justify-center rounded-xl bg-brand-500 px-4 py-2 text-xs font-medium text-slate-50 shadow-glow transition-colors hover:bg-brand-400 ${focusRingClasses}`}
+              >
+                Sign In
+              </Link>
+            )}
           </div>
         </div>
       )}
