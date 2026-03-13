@@ -17,13 +17,14 @@ interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
+  const isHome = location.pathname === '/';
 
   return (
     <div className="min-h-screen flex flex-col relative">
       <AnimatedBackground />
       <Navbar />
       <main className="flex-1 pt-20 pb-12">
-        <div className="section-max-width">
+        <div className={isHome ? 'w-full' : 'section-max-width'}>
           <AnimatePresence mode="wait">
             <motion.div
               key={location.pathname}

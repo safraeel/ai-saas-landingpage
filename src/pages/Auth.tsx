@@ -4,6 +4,7 @@ import { account } from '../appwrite';
 import { ID } from 'appwrite';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
+import { Mail, Lock, User, ArrowRight, Loader2 } from 'lucide-react';
 
 export const AuthPage: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -22,85 +23,109 @@ export const AuthPage: React.FC = () => {
 
     try {
       if (isLogin) {
-        // Appwrite login
         await account.createEmailPasswordSession(email, password);
-        await checkAuth(); // Update global auth state
+        await checkAuth(); 
         navigate('/dashboard');
       } else {
-        // Appwrite sign up
         await account.create(ID.unique(), email, password, name);
-        // Automatically log them in after signup
         await account.createEmailPasswordSession(email, password);
-        await checkAuth(); // Update global auth state
+        await checkAuth(); 
         navigate('/dashboard');
       }
     } catch (err: any) {
-      setError(err.message || 'Authentication failed. Please try again.');
+      setError(err.message || 'Authentication failed. Please try again.');      
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="flex min-h-[70vh] items-center justify-center p-4">
+    <div className="flex min-h-[80vh] items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.4 }}
-        className="glass-panel w-full max-w-md p-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="relative w-full max-w-md space-y-8 overflow-hidden rounded-[2rem] border border-slate-200 bg-white/80 p-8 shadow-2xl sm:p-10 dark:border-white/5 dark:bg-slate-900/60"
       >
-        <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold text-slate-50">
+        <div className="absolute -top-32 -right-32 h-64 w-64 rounded-full bg-brand-500/20 blur-[80px] pointer-events-none" />
+        <div className="absolute -bottom-32 -left-32 h-64 w-64 rounded-full bg-violet-500/20 blur-[80px] pointer-events-none" />
+        
+        <div className="relative text-center">
+          <motion.div 
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-100 ring-1 ring-slate-300 shadow-glow dark:bg-white/5 dark:ring-white/10"
+          >
+            <Lock className="h-6 w-6 text-brand-400" />
+          </motion.div>
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
             {isLogin ? 'Welcome back' : 'Create an account'}
           </h2>
-          <p className="mt-2 text-sm text-slate-400">
+          <p className="mt-3 text-sm text-slate-600 dark:text-gray-400">
             {isLogin
-              ? 'Enter your details to access your account'
-              : 'Sign up to get started saving and managing your AI stack.'}
+              ? 'Enter your credentials to access your dashboard.'
+              : 'Sign up to launch your AI integrations faster.'}    
           </p>
         </div>
 
         {error && (
-          <div className="mb-4 rounded-lg bg-red-500/10 p-3 text-sm text-red-500 border border-red-500/20">
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="rounded-xl bg-red-500/10 p-4 border border-red-500/20 text-sm text-red-400 flex items-center gap-3"
+          >
+            <div className="h-1.5 w-1.5 rounded-full bg-red-500" />
             {error}
-          </div>
+          </motion.div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="mt-8 space-y-5 relative">
           {!isLogin && (
-            <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">Name</label>
+            <div className="relative">
+              <label htmlFor="name" className="sr-only">Full Name</label>
+              <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+                <User className="h-5 w-5 text-slate-500 dark:text-gray-500" />
+              </div>
               <input
+                id="name"
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full rounded-xl border border-slate-700 bg-slate-900/50 px-4 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
+                className="block w-full rounded-xl border-0 bg-white py-4 pl-12 pr-4 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-brand-500 transition-all placeholder:text-slate-400 sm:text-sm sm:leading-6 dark:bg-white/5 dark:text-white dark:ring-white/10 dark:placeholder:text-gray-500"
                 placeholder="John Doe"
                 required={!isLogin}
               />
             </div>
           )}
 
-          <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1">Email Address</label>
+          <div className="relative">
+            <label htmlFor="email-address" className="sr-only">Email address</label>
+            <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+              <Mail className="h-5 w-5 text-slate-500 dark:text-gray-500" />
+            </div>
             <input
+              id="email-address"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-xl border border-slate-700 bg-slate-900/50 px-4 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
+              className="block w-full rounded-xl border-0 bg-white py-4 pl-12 pr-4 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-brand-500 transition-all placeholder:text-slate-400 sm:text-sm sm:leading-6 dark:bg-white/5 dark:text-white dark:ring-white/10 dark:placeholder:text-gray-500"
               placeholder="you@example.com"
               required
             />
           </div>
 
-          <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1">Password</label>
+          <div className="relative">
+            <label htmlFor="password" className="sr-only">Password</label>
+            <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+              <Lock className="h-5 w-5 text-slate-500 dark:text-gray-500" />
+            </div>
             <input
+              id="password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full rounded-xl border border-slate-700 bg-slate-900/50 px-4 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
-              placeholder="••••••••"
+              className="block w-full rounded-xl border-0 bg-white py-4 pl-12 pr-4 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-brand-500 transition-all placeholder:text-slate-400 sm:text-sm sm:leading-6 dark:bg-white/5 dark:text-white dark:ring-white/10 dark:placeholder:text-gray-500"
+              placeholder="********"
               required
               minLength={8}
             />
@@ -109,21 +134,30 @@ export const AuthPage: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className="mt-6 w-full rounded-xl bg-brand-500 py-3 text-sm font-medium text-slate-50 shadow-glow transition-colors hover:bg-brand-400 disabled:opacity-70"
+            className="group relative flex w-full justify-center items-center gap-2 rounded-xl bg-brand-500 py-4 px-3 text-sm font-semibold text-white hover:bg-brand-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 shadow-glow transition-all duration-200 hover:scale-[1.02] disabled:opacity-70 disabled:hover:scale-100"
           >
-            {loading ? 'Processing...' : isLogin ? 'Sign In' : 'Sign Up'}
+            {loading ? (
+              <Loader2 className="h-5 w-5 animate-spin" />
+            ) : (
+              <>
+                {isLogin ? 'Sign In' : 'Create Account'}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </>
+            )}
           </button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-slate-400">
-          {isLogin ? "Don't have an account? " : "Already have an account? "}
-          <button
-            onClick={() => setIsLogin(!isLogin)}
-            className="text-brand-400 hover:text-brand-300 font-medium transition-colors"
-          >
-            {isLogin ? 'Sign up' : 'Sign in'}
-          </button>
-        </p>
+        <div className="relative mt-6">
+          <p className="text-center text-sm text-slate-600 dark:text-gray-400">
+            {isLogin ? "Don't have an account? " : "Already have an account? "}   
+            <button
+              onClick={() => setIsLogin(!isLogin)}
+              className="font-semibold leading-6 text-brand-400 hover:text-brand-300 transition-colors"
+            >
+              {isLogin ? 'Sign up' : 'Sign in'}
+            </button>
+          </p>
+        </div>
       </motion.div>
     </div>
   );

@@ -1,302 +1,168 @@
-﻿import React from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import { ArrowRight, Sparkles, Zap, Shield, ChevronRight } from 'lucide-react';
+import { cn } from '../utils/cn';
+import { Link } from 'react-router-dom';
 
 const featureCards = [
   {
-    title: 'Conversion-first hero + messaging',
-    description: 'Clear value prop, strong CTA hierarchy, and copy that sells your AI product in seconds.',
+    icon: <Sparkles className="h-5 w-5 text-brand-400" />,
+    title: 'AI Conversion Engine',
+    description: 'We build landing pages specifically optimized for AI products to maximize signups and demo bookings.',
   },
   {
-    title: 'Premium UI motion & polish',
-    description: 'Smooth, modern interactions (micro-animations, hover states, scroll feel) that signal quality.',
+    icon: <Zap className="h-5 w-5 text-emerald-400" />,
+    title: 'Lightning Fast',
+    description: 'Built on Vite and React, ensuring millisecond load times to keep your drop-off rates near zero.',
   },
   {
-    title: 'Performance + accessibility',
-    description: 'Fast loading, great Lighthouse scores, and keyboard/screen-reader friendly UI by default.',
+    icon: <Shield className="h-5 w-5 text-violet-400" />,
+    title: 'Enterprise Trust',
+    description: 'B2B-ready design systems that establish credibility with enterprise buyers instantly.',
   },
 ];
 
 export const HomePage: React.FC = () => {
-  const focusRingClasses =
-    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950';
-
   return (
-    <div className="space-y-14 sm:space-y-16" id="top">
-      <section className="grid items-center gap-8 pt-3 sm:gap-10 sm:pt-4 lg:grid-cols-[1.4fr_1fr]">
-        <motion.div>
-          <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="text-4xl font-semibold tracking-tight text-slate-50 sm:text-5xl lg:text-[3.4rem]"
-          >
-            Launchglow landing pages that convert.
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, ease: 'easeOut', delay: 0.05 }}
-            className="mt-6 max-w-xl text-base text-slate-300 sm:text-lg"
-          >
-            I design and build premium landing pages for AI tools - fast, smooth, and focused on signups, demos, and
-            revenue.
-          </motion.p>
+    <div className="relative isolate overflow-x-clip">
+      <div className="pointer-events-none absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
+        <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" />
+      </div>
+
+      <div className="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-32 lg:flex lg:px-8 lg:py-40">
+        <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0 lg:pt-8">
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 }}
-            className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
+            transition={{ duration: 0.5 }}
+            className="mt-24 sm:mt-32 lg:mt-16"
           >
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="#work"
-              className={`inline-flex w-full items-center justify-center rounded-xl bg-brand-500 px-6 py-3 text-sm font-medium text-slate-50 shadow-glow transition-colors hover:bg-brand-400 sm:w-auto sm:py-2.5 ${focusRingClasses}`}
-            >
-              View case studies
-              <ArrowRightIcon className="ml-2 h-4 w-4" />
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="#contact"
-              className={`inline-flex w-full items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-3 text-sm font-medium text-slate-200 shadow-soft transition-colors hover:border-slate-700 hover:bg-slate-900 sm:w-auto sm:py-2.5 ${focusRingClasses}`}
-            >
-              Work with me
-            </motion.a>
+            <a href="#features" className="inline-flex space-x-6">
+              <span className="rounded-full bg-brand-500/10 px-3 py-1 text-sm font-semibold leading-6 text-brand-400 ring-1 ring-inset ring-brand-500/20">
+                What's new
+              </span>
+              <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-slate-600 dark:text-gray-300">
+                <span>Just shipped God-Mode UI</span>
+                <ChevronRight className="h-4 w-4 text-gray-500" />
+              </span>
+            </a>
           </motion.div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
-          className="glass-panel relative overflow-hidden p-6 sm:p-7 lg:p-8"
-        >
-          <div className="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-brand-500/30 blur-3xl" />
-          <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-violet-500/30 blur-3xl" />
-          <div className="relative space-y-4">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-brand-200">AI launch-ready delivery</p>
-            <p className="text-sm text-slate-300">
-              Conversion-focused sections, clean UI systems, and motion polish - built like a real product.
-            </p>
-            <div className="mt-4 grid grid-cols-2 gap-3 text-xs">
-              <div className="rounded-2xl border border-slate-700/70 bg-slate-900/80 p-3">
-                <p className="text-[11px] text-slate-400">Build speed</p>
-                <p className="mt-1 font-medium text-slate-100">Vite + React + Tailwind</p>
-              </div>
-              <div className="rounded-2xl border border-slate-700/70 bg-slate-900/80 p-3">
-                <p className="text-[11px] text-slate-400">Conversion focus</p>
-                <p className="mt-1 font-medium text-emerald-300">Signups + demos</p>
-              </div>
-              <div className="col-span-2 rounded-2xl border border-slate-700/70 bg-slate-900/80 p-3">
-                <p className="text-[11px] text-slate-400">Quality bar</p>
-                <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-slate-800">
-                  <div className="h-full w-3/4 rounded-full bg-gradient-to-r from-brand-400 via-emerald-400 to-violet-400" />
-                </div>
-                <p className="mt-1 text-[11px] text-slate-400">Design, performance, and polish - shipped together.</p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </section>
-
-      <section className="space-y-6 scroll-mt-28" id="process">
-        <div className="flex items-end justify-between gap-4">
-          <div>
-            <h2 className="text-xl font-semibold text-slate-50 sm:text-2xl">What clients get.</h2>
-            <p className="mt-1 text-sm text-slate-400">A landing page that looks premium and sells your AI tool.</p>
-          </div>
-        </div>
-        <div className="grid gap-5 md:grid-cols-3">
-          {featureCards.map((card) => (
-            <motion.div
-              key={card.title}
-              whileHover={{ y: -4, scale: 1.01 }}
-              transition={{ type: 'spring', stiffness: 260, damping: 18 }}
-              className="glass-panel relative overflow-hidden p-5"
-            >
-              <div className="absolute inset-px rounded-[1.4rem] border border-white/5" />
-              <div className="relative">
-                <h3 className="text-sm font-medium text-slate-50">{card.title}</h3>
-                <p className="mt-2 text-xs text-slate-400">{card.description}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      <section id="work" className="space-y-6 scroll-mt-28">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
-          <div>
-            <h2 className="text-xl font-semibold text-slate-50 sm:text-2xl">Case studies</h2>
-            <p className="mt-1 max-w-2xl text-sm text-slate-400">
-              Three common AI launch pages. Each shows the structure, copy intent, and UX details that drive
-              conversions.
-            </p>
-          </div>
-          <a
-            href="#contact"
-            className={`inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-2 text-xs font-medium text-slate-200 shadow-soft transition-colors hover:border-slate-700 hover:bg-slate-900 ${focusRingClasses}`}
+          
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mt-10 text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-6xl"
           >
-            Get a quote
-          </a>
-        </div>
-        <div className="grid gap-5 md:grid-cols-3">
-          {[
-            {
-              title: 'AI Tool Hero + Value Prop',
-              summary: 'Headline, proof, and CTA hierarchy that makes the product instantly understandable.',
-              meta: 'Quick scope',
-            },
-            {
-              title: 'Waitlist Page + Email Capture',
-              summary: 'High-trust waitlist with strong objections handling and clean form states.',
-              meta: 'Standard scope',
-            },
-            {
-              title: 'Full Marketing Landing + Pricing',
-              summary: 'Sections, FAQ, pricing, and conversion CTAs designed for paid acquisition.',
-              meta: 'Complex scope',
-            },
-          ].map((item) => (
-            <motion.article
-              key={item.title}
-              whileHover={{ y: -6, scale: 1.02 }}
-              transition={{ type: 'spring', stiffness: 260, damping: 22 }}
-              className="glass-panel border-slate-800/80 p-4 text-xs text-slate-200"
+            Launch your AI SaaS into orbit.
+          </motion.h1>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-6 text-lg leading-8 text-slate-700 dark:text-gray-300"
+          >
+            Stop settling for generic templates. Get a custom-engineered, high-conversion landing page designed exclusively for AI startups. Turn traffic into paid users today.
+          </motion.p>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-10 flex items-center gap-x-6"
+          >
+            <Link
+              to="/pricing"
+              className={cn(
+                "group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-full bg-brand-500 px-8 font-medium text-white shadow-glow transition-all duration-300 hover:bg-brand-400 hover:scale-105 hover:shadow-[0_0_40px_8px_rgba(255,160,50,0.3)]"
+              )}
             >
-              <p className="text-[11px] text-slate-400">{item.meta}</p>
-              <h3 className="mt-1 text-sm font-semibold text-slate-50">{item.title}</h3>
-              <p className="mt-2 text-[11px] text-slate-400">{item.summary}</p>
-            </motion.article>
-          ))}
+              <span>View Subscriptions</span>
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+            <Link to="/auth" className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-500 dark:text-white dark:hover:text-brand-300 transition-colors">
+              Access Dashboard <span aria-hidden="true">{'->'}</span>
+            </Link>
+          </motion.div>
         </div>
-      </section>
-
-      <section id="pricing" className="space-y-6 scroll-mt-28">
-        <div>
-          <h2 className="text-xl font-semibold text-slate-50 sm:text-2xl">Pricing</h2>
-          <p className="mt-1 max-w-2xl text-sm text-slate-400">
-            Simple packages you can choose from. Final quote depends on sections, copy needs, and integrations.
-          </p>
-        </div>
-        <div className="grid gap-5 md:grid-cols-3">
-          {[
-            {
-              title: 'Quick',
-              price: '$299 - $599',
-              bullets: ['Hero + proof + CTA', 'Responsive + accessible', 'Premium motion polish'],
-            },
-            {
-              title: 'Standard',
-              price: '$799 - $1499',
-              bullets: ['Full landing sections', 'Waitlist/demo form states', 'Performance-first build'],
-            },
-            {
-              title: 'Complex',
-              price: '$1999+',
-              bullets: ['Pricing + FAQ + variants', 'Analytics events + tracking hooks', 'Iterative polish pass'],
-            },
-          ].map((tier) => (
-            <div key={tier.title} className="glass-panel border-slate-800/80 p-5 text-xs text-slate-200">
-              <p className="text-[11px] text-slate-400">{tier.title}</p>
-              <p className="mt-2 text-xl font-semibold text-slate-50">{tier.price}</p>
-              <ul className="mt-3 space-y-2 text-[11px] text-slate-300">
-                {tier.bullets.map((b) => (
-                  <li key={b} className="flex items-start gap-2">
-                    <span className="mt-[3px] h-1.5 w-1.5 rounded-full bg-brand-400" />
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
+        
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="mx-auto mt-12 flex w-full max-w-xl justify-center sm:mt-16 lg:mt-0 lg:max-w-2xl lg:justify-end"
+        >
+          <div className="w-full">
+            <div className="relative glass-panel rounded-2xl p-4 ring-1 ring-white/10 lg:rounded-3xl lg:p-6">
+              <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand-500/20 blur-[100px] pointer-events-none" />
+              <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-violet-500/20 blur-[100px] pointer-events-none" />
+              
+              <div className="relative overflow-hidden rounded-xl border border-slate-200 bg-white/70 shadow-2xl backdrop-blur-sm dark:border-slate-800 dark:bg-slate-900/50">
+                <div className="flex border-b border-slate-200 bg-slate-100/80 px-4 py-3 dark:border-slate-700/50 dark:bg-slate-800/50">
+                  <div className="flex space-x-2">
+                    <div className="h-3 w-3 rounded-full bg-red-500/80" />
+                    <div className="h-3 w-3 rounded-full bg-yellow-500/80" />
+                    <div className="h-3 w-3 rounded-full bg-green-500/80" />
+                  </div>
+                </div>
+                <div className="p-6 md:p-10 space-y-6">
+                  <div className="font-mono text-sm text-brand-300">
+                    <span className="text-pink-400">const</span> <span className="text-blue-400">growth</span> = <span className="text-yellow-300">await</span> Launchglow.optimize();
+                  </div>
+                  <div className="grid grid-cols-2 gap-4 text-xs">
+                    <div className="rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:bg-slate-50 dark:border-white/5 dark:bg-white/5 dark:hover:bg-white/10">
+                      <p className="text-slate-500 dark:text-slate-400">Conversion Rate</p>
+                      <p className="mt-2 text-2xl font-semibold text-emerald-400">+142%</p>
+                    </div>
+                    <div className="rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:bg-slate-50 dark:border-white/5 dark:bg-white/5 dark:hover:bg-white/10">
+                      <p className="text-slate-500 dark:text-slate-400">Load Time</p>
+                      <p className="mt-2 text-2xl font-semibold text-brand-400">0.8s</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="faq" className="space-y-6 scroll-mt-28">
-        <div>
-          <h2 className="text-xl font-semibold text-slate-50 sm:text-2xl">FAQ</h2>
-          <p className="mt-1 max-w-2xl text-sm text-slate-400">Quick answers founders usually ask before hiring.</p>
-        </div>
-        <div className="grid gap-4 md:grid-cols-2">
-          {[
-            {
-              q: 'Do you write copy?',
-              a: 'I can refine your existing copy or draft a clear first version. Final messaging is aligned in Discovery.',
-            },
-            {
-              q: 'What stack do you ship with?',
-              a: 'React + Vite + Tailwind by default. If you need Next.js for SEO, we can adapt the same design system.',
-            },
-            {
-              q: 'Can you connect a waitlist form?',
-              a: 'Yes. I can wire a simple form, success/error states, and hook it to your provider or API endpoint.',
-            },
-            {
-              q: 'How fast can we launch?',
-              a: 'Quick builds can ship in days. Larger marketing pages depend on section count and feedback loops.',
-            },
-          ].map((item) => (
-            <div key={item.q} className="glass-panel border-slate-800/80 p-4 text-xs text-slate-200">
-              <p className="text-sm font-semibold text-slate-50">{item.q}</p>
-              <p className="mt-2 text-[11px] text-slate-400">{item.a}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="contact" className="space-y-6 scroll-mt-28">
-        <div className="glass-panel border-slate-800/80 p-6">
-          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-slate-400">Contact</p>
-          <h2 className="mt-2 text-xl font-semibold text-slate-50 sm:text-2xl">Ready to launch your AI tool?</h2>
-          <p className="mt-2 max-w-2xl text-sm text-slate-400">
-            Send your product link + goal (waitlist, demo bookings, pricing page). I&apos;ll reply with a plan and timeline.
-          </p>
-          <div className="mt-5 flex flex-wrap items-center gap-3">
-            <a
-              href="mailto:Safraeelz@gmail.com"
-              className={`inline-flex items-center justify-center rounded-xl bg-slate-50 px-4 py-2 text-[11px] font-medium text-slate-950 shadow-soft hover:bg-slate-200 ${focusRingClasses}`}
-            >
-              Email: Safraeelz@gmail.com
-            </a>
-            <a
-              href="https://t.me/TujiZ"
-              target="_blank"
-              rel="noreferrer"
-              className={`inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-2 text-[11px] font-medium text-slate-200 shadow-soft hover:border-slate-700 hover:bg-slate-900 ${focusRingClasses}`}
-            >
-              Telegram: @TujiZ
-            </a>
-            <a
-              href="https://wa.me/251901337491?text=Hi%20Safraeel%2C%20I%20need%20a%20landing%20page%20for%20my%20AI%20tool.%20Here%27s%20my%20link%3A%20"
-              target="_blank"
-              rel="noreferrer"
-              className={`inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-2 text-[11px] font-medium text-slate-200 shadow-soft hover:border-slate-700 hover:bg-slate-900 ${focusRingClasses}`}
-            >
-              WhatsApp: +251 901 337 491
-            </a>
           </div>
-          <p className="mt-3 text-[10px] text-slate-500">Email me and I&apos;ll respond with next steps.</p>
-        </div>
-      </section>
+        </motion.div>
+      </div>
 
-      <section className="space-y-6">
-        <h2 className="text-xl font-semibold text-slate-50 sm:text-2xl">Trusted by builders shipping AI.</h2>
-        <div className="grid gap-5 md:grid-cols-3">
-          {Array.from({ length: 3 }).map((_, idx) => (
-            <div key={idx} className="glass-panel p-5 sm:p-6 text-sm leading-relaxed text-slate-300 md:text-xs md:leading-normal">
-              <p className="text-slate-300">
-                “The landing page finally matched our product quality. Copy, motion, and layout felt premium - and
-                signups improved.”
-              </p>
-              <p className="mt-4 text-xs text-slate-500 md:mt-3 md:text-[11px]">Founder - AI SaaS</p>
-            </div>
-          ))}
+      <div id="features" className="mx-auto max-w-7xl px-6 pb-24 sm:pb-32 lg:px-8">
+        <div className="mx-auto max-w-2xl lg:text-center">
+          <h2 className="text-base font-semibold leading-7 text-brand-500 dark:text-brand-400">Deploy faster</h2>
+          <p className="mt-2 text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
+            Everything you need. No bullshit.
+          </p>
+          <p className="mt-6 text-lg leading-8 text-slate-700 dark:text-gray-300">
+            We stripped away the clutter to give you exactly what scales AI startups. Pure performance, undeniable aesthetics.
+          </p>
         </div>
-      </section>
+        <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+          <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+            {featureCards.map((feature, i) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="flex flex-col glass-panel p-8 rounded-3xl relative overflow-hidden group border border-white/5 hover:border-brand-500/30 transition-colors"
+              >
+                <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-white relative z-10">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5">
+                    {feature.icon}
+                  </div>
+                  {feature.title}
+                </dt>
+                <dd className="mt-4 flex flex-auto flex-col text-sm leading-7 text-gray-300 relative z-10">
+                  <p className="flex-auto">{feature.description}</p>
+                </dd>
+              </motion.div>
+            ))}
+          </dl>
+        </div>
+      </div>
     </div>
   );
 };
