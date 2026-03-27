@@ -7,16 +7,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Launchglow Studio builds conversion-first landing pages for AI products — premium UI, motion polish, and fast performance." />
     <meta name="theme-color" content="#020617" />
+    <link rel="canonical" href="https://launchglow.tech/" />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:site_name" content="Launchglow Studio" />
+    <meta property="og:title" content="Launch your AI SaaS into orbit — Launchglow Studio" />
+    <meta property="og:description" content="Launchglow Studio builds conversion-first landing pages for AI products — premium UI, motion polish, and fast performance." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://launchglow.tech/" />
+    <meta property="og:image" content="https://launchglow.tech/images/launchglow.svg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Launch your AI SaaS into orbit — Launchglow Studio" />
+    <meta name="twitter:description" content="Launchglow Studio builds conversion-first landing pages for AI products — premium UI, motion polish, and fast performance." />
+    <meta name="twitter:image" content="https://launchglow.tech/images/launchglow.svg" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
-    <script type="module" crossorigin src="/assets/index-DHSqYCJ4.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DFxapSPI.css">
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Launchglow Studio",
+      "url": "https://launchglow.tech",
+      "description": "Conversion-first landing pages for AI products — premium UI, motion polish, and fast performance."
+    }
+    </script>
+    <script type="module" crossorigin src="/assets/index-DsAcLyOg.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/vendor-B4dOfYfY.js">
+    <link rel="modulepreload" crossorigin href="/assets/vendor_react-BaJTHbMy.js">
+    <link rel="modulepreload" crossorigin href="/assets/vendor_lucide-CyE3WyA0.js">
+    <link rel="modulepreload" crossorigin href="/assets/vendor_framer-motion-32YvFxcT.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-BOmcR2vw.css">
   </head>
   <body class="bg-slate-950 text-slate-50">
     <div id="root"></div>
 
-    <!-- SimpleAnalytics (Privacy First Tracking) -->
-    <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+    <!-- SimpleAnalytics (Privacy First Tracking) - deferred to idle/interaction to avoid blocking page load -->
+    <script>
+      (function(){
+        if (window.__sa_loaded) return;
+        function loadSA(){
+          if (window.__sa_loaded) return;
+          window.__sa_loaded = true;
+          var s = document.createElement('script');
+          s.src = 'https://scripts.simpleanalyticscdn.com/latest.js';
+          s.async = true;
+          s.defer = true;
+          document.head.appendChild(s);
+        }
+
+        // Load during idle (preferred) or shortly after load as a fallback
+        if ('requestIdleCallback' in window) {
+          try { requestIdleCallback(loadSA, {timeout: 2000}); } catch (e) { setTimeout(loadSA, 1500); }
+        } else {
+          window.addEventListener('load', function(){ setTimeout(loadSA, 1500); }, {once:true});
+        }
+
+        // Also load on first user interaction to capture engaged users early
+        ['click','keydown','pointerdown','touchstart'].forEach(function(evt){
+          document.addEventListener(evt, loadSA, {once:true, passive:true});
+        });
+      })();
+    </script>
     <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
   </body>
 </html>
