@@ -32,6 +32,17 @@ and the Output Directory to (leave blank) — Vercel will detect Next.
 - If you use a custom domain, add it in the Vercel dashboard and configure DNS accordingly.
 - If you want automatic previews for PRs, keep the default preview settings.
 
+## Optional: automatic deploys from GitHub
+
+You can automate deployments from the `server-deploy` branch using a GitHub Action. I added a starter workflow at `.github/workflows/vercel-deploy.yml` that triggers on pushes to `server-deploy` and deploys to Vercel via the Vercel action.
+
+Required repository secrets (set in GitHub Settings → Secrets → Actions):
+- `VERCEL_TOKEN` — a Vercel personal token (from your Vercel account).
+- `VERCEL_ORG_ID` — your Vercel organization ID.
+- `VERCEL_PROJECT_ID` — the Vercel project ID for this site.
+
+After setting those secrets, push to `server-deploy` (or open a PR) and the workflow will deploy the updated app to Vercel.
+
 ## Local testing before deploy
 Run locally with the environment variables in `.env.local`:
 
