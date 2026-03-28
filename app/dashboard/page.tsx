@@ -80,7 +80,7 @@ export default function DashboardPage() {
         body: JSON.stringify({
           idea: idea.trim(),
           platforms: selectedPlatforms,
-          userId: session.user.id,
+          userId: session.user.email || '',
         }),
       });
 

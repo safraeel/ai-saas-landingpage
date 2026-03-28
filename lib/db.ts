@@ -20,3 +20,6 @@ export async function connectToDatabase() {
 }
 
 export { client };
+
+// Export clientPromise for NextAuth adapter
+export const clientPromise = client;
